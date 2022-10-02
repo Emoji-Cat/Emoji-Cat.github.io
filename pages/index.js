@@ -1,63 +1,47 @@
 import Head from 'next/head'
+import tippy from 'tippy.js';
+import 'tippy.js/dist/tippy.css'; // optional for styling
 
 export default function Home() {
+  if (typeof window !== 'undefined') {
+    tippy(".card", {
+      animation: 'fade',
+      content: '복사되었습니다.',
+      trigger: 'click',
+      hideOnClick: false,
+      onShow(instance) {
+        setTimeout(() => {
+          instance.hide();
+        }, 1000);
+      }
+    });
+  }
   return (
     <div className="container">
       <Head>
-        <title>Create Next App</title>
+        <title>Emoji Cat 😽</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
         <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          이모지 고양이의 추천 이모지 목록
         </h1>
 
         <p className="description">
-          Get started by editing <code>pages/index.js</code>
+          클릭 하면 복사가 돼요! 😽
         </p>
 
         <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+          <button onClick={() => {
+            navigator.clipboard.writeText(String.fromCodePoint('0x1f600'));
+          }} className="card">
+            <h3>
+              {String.fromCodePoint('0x1f600')}
+            </h3>
+          </button>
         </div>
       </main>
-
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel" className="logo" />
-        </a>
-      </footer>
 
       <style jsx>{`
         .container {
@@ -168,7 +152,7 @@ export default function Home() {
         }
 
         .card h3 {
-          margin: 0 0 1rem 0;
+          margin: 0 0 0 0;
           font-size: 1.5rem;
         }
 

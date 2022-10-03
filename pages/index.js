@@ -75,7 +75,7 @@ export default function Home() {
         </h1>
 
         <p className="description">
-          클릭 하면 복사가 돼요! 😽
+          클릭하면 복사가 돼요! 😽
         </p>
 
         <div className="grid">

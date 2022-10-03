@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css'; // optional for styling
-import EmojiUnicode from './emoji-unicode.js';
+import EmojiUnicode from '../components/datasources/emoji-unicode.js';
 
 function BigSection(props) {
   const title = props.bighead.bighead

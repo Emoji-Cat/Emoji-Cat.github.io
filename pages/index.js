@@ -1,6 +1,49 @@
-import Head from 'next/head'
+import Head from 'next/head';
 import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css'; // optional for styling
+import EmojiUnicode from './emoji-unicode.js';
+
+function BigSection(props) {
+  const title = props.bighead.bighead
+  const sections = props.bighead.sections
+  return (
+    <div className='big-section'>
+      <h2>
+        { title }
+      </h2>
+      {
+        sections.map((section => <MediumSection section={section}/>))
+      }
+    </div>
+  )
+}
+
+function MediumSection(props) {
+  const title = props.section.mediumhead
+  const contents = props.section.contents
+  return (
+    <span>
+      <h4>
+        { title }
+      </h4>
+      {
+        contents.map((content) => <Emoji content={content}/>)
+      }
+    </span>
+  )
+}
+
+function Emoji(props) {
+  const unicode = '0x' + props.content.code.split('_')[0];
+  const name = props.content.name; // Emoji name
+  return (
+    <button onClick={() => {
+      navigator.clipboard.writeText(String.fromCodePoint(unicode));
+    }} className='card'>
+      <h3> { String.fromCodePoint(unicode) } </h3>
+    </button>
+  )
+}
 
 export default function Home() {
   if (typeof window !== 'undefined') {
@@ -16,6 +59,9 @@ export default function Home() {
       }
     });
   }
+
+  const emojis = EmojiUnicode()
+
   return (
     <div className="container">
       <Head>
@@ -33,13 +79,9 @@ export default function Home() {
         </p>
 
         <div className="grid">
-          <button onClick={() => {
-            navigator.clipboard.writeText(String.fromCodePoint('0x1f600'));
-          }} className="card">
-            <h3>
-              {String.fromCodePoint('0x1f600')}
-            </h3>
-          </button>
+          {
+            emojis.map((bighead) => <BigSection bighead={bighead}/>)
+          }
         </div>
       </main>
 
@@ -130,36 +172,6 @@ export default function Home() {
 
           max-width: 800px;
           margin-top: 3rem;
-        }
-
-        .card {
-          margin: 1rem;
-          flex-basis: 45%;
-          padding: 1.5rem;
-          text-align: left;
-          color: inherit;
-          text-decoration: none;
-          border: 1px solid #eaeaea;
-          border-radius: 10px;
-          transition: color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .card:hover,
-        .card:focus,
-        .card:active {
-          color: #0070f3;
-          border-color: #0070f3;
-        }
-
-        .card h3 {
-          margin: 0 0 0 0;
-          font-size: 1.5rem;
-        }
-
-        .card p {
-          margin: 0;
-          font-size: 1.25rem;
-          line-height: 1.5;
         }
 
         .logo {

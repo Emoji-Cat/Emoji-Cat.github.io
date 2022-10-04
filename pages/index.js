@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css'; // optional for styling
 import EmojiUnicode from '../components/datasources/emoji-unicode.js';
@@ -7,7 +6,7 @@ function BigSection(props) {
   const title = props.bighead.bighead
   const sections = props.bighead.sections
   return (
-    <div className='big-section'>
+    <div className='big-section' key={title}>
       <h2>
         { title }
       </h2>
@@ -64,11 +63,6 @@ export default function Home() {
 
   return (
     <div className="container">
-      <Head>
-        <title>Emoji Cat 😽</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <main>
         <h1 className="title">
           이모지 고양이의 추천 이모지 목록

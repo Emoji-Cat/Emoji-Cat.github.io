@@ -161,7 +161,7 @@ export default function Home() {
         .grid {
           display: flex;
           align-items: center;
-          justify-content: center;
+          justify-content: start;
           flex-wrap: wrap;
 
           max-width: 800px;

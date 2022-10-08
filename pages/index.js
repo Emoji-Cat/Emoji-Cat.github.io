@@ -2,6 +2,8 @@ import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css'; // optional for styling
 import EmojiUnicode from '../components/datasources/emoji-unicode.js';
 
+export { default as getServerSideProps } from "../lib/server-props";
+
 function BigSection(props) {
   const title = props.bighead.bighead
   const sections = props.bighead.sections
@@ -44,7 +46,7 @@ function Emoji(props) {
   )
 }
 
-export default function Home() {
+export default function Home({ deviceType }) {
   if (typeof window !== 'undefined') {
     tippy(".card", {
       animation: 'fade',
@@ -65,7 +67,9 @@ export default function Home() {
     <div className="container">
       <main>
         <h1 className="title">
-          이모지 고양이의 추천 이모지 목록
+          {
+            deviceType === 'mobile' ? '이모지 고양이 추천 이모지' : '이모지 고양이의 추천 이모지'
+          }
         </h1>
 
         <p className="description">

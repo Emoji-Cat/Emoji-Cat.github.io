@@ -1,6 +1,5 @@
 // pages/_app.js
 import Head from 'next/head'
-import Script from 'next/script'
 import './css/card.css'
 
 export default function MyApp({ Component, pageProps }) {

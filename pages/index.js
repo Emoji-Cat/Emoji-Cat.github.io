@@ -37,13 +37,13 @@ function MediumSection(props) {
 }
 
 function Emoji(props) {
-  const unicode = '0x' + props.content.code.split('_')[0];
+  const unicode = props.content.code.split('_').map(c => '0x' + c);
   const name = props.content.name; // Emoji name
   return (
     <button onClick={() => {
-      navigator.clipboard.writeText(String.fromCodePoint(unicode));
+      navigator.clipboard.writeText(String.fromCodePoint(...unicode));
     }} className='card'>
-      <h3> { String.fromCodePoint(unicode) } </h3>
+      <h3> { String.fromCodePoint(...unicode) } </h3>
     </button>
   )
 }

@@ -8,14 +8,16 @@ function BigSection(props) {
   const title = props.bighead.bighead
   const sections = props.bighead.sections
   return (
-    <div className='big-section' key={title}>
+    <li className='big-section' key={title}>
       <h2>
         { title }
       </h2>
-      {
-        sections.map((section => <MediumSection section={section}/>))
-      }
-    </div>
+      <ul>
+        {
+          sections.map((section => <MediumSection section={section}/>))
+        }
+      </ul>
+    </li>
   )
 }
 
@@ -23,14 +25,14 @@ function MediumSection(props) {
   const title = props.section.mediumhead
   const contents = props.section.contents
   return (
-    <span>
+    <li>
       <h4>
         { title }
       </h4>
       {
         contents.map((content) => <Emoji content={content}/>)
       }
-    </span>
+    </li>
   )
 }
 
@@ -76,11 +78,11 @@ export default function Home({ deviceType }) {
           클릭하면 복사가 돼요! 😽
         </p>
 
-        <div className="grid">
+        <ul className="grid">
           {
             emojis.map((bighead) => <BigSection bighead={bighead}/>)
           }
-        </div>
+        </ul>
       </main>
 
       <style jsx>{`

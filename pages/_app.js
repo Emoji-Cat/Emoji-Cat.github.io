@@ -11,14 +11,15 @@ export default function MyApp({ Component, pageProps }) {
         <title>Emoji Cat 😽</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4352778397803727" crossorigin="anonymous"></script>
       </Head>
-      <Script
+      {/* <Script
         id="Adsense-id"
         async strategy="beforeInteractive"
         onError={ (e) => { console.error('Script failed to load', e) }}
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4352778397803727"
-        crossOrigin="anonymous"
-      />
+        crossorigin="anonymous"
+      /> */}
       <Component {...pageProps} />
     </>
   )

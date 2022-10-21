@@ -11,6 +11,7 @@ export default function MyApp({ Component, pageProps }) {
         <title>Emoji Cat 😽</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="google-site-verification" content="Fj72TTEG80mXVgHNIA4fKeb3hy4Oa-20LvlcvTncKFI" />
         <script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4352778397803727" crossorigin="anonymous"></script>
       </Head>
       {/* <Script
